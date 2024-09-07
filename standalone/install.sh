@@ -92,7 +92,7 @@ package_install tinydb==4.7.1
 
 printf "\n==================================================\n"
 printf "Install Custom Python EnOcean Library\n\n"
-pip3 install --user --force-reinstall git+https://github.com/mak-gitdev/enocean.git
+pip3 install --user --force-reinstall git+https://github.com/superhero1/enocean.git
 
 printf "\n==================================================\n"
 printf "Install enocean-mqtt\n\n"
@@ -104,7 +104,7 @@ printf "\n==================================================\n"
 printf "Install Home Assistant overlay\n\n"
 if [ ! -z "${BRANCH}" ]; then
     printf "Installing HEAD of branch %s\n" ${BRANCH}
-    git clone -b ${BRANCH} --single-branch --depth 1 https://github.com/mak-gitdev/HA_enoceanmqtt.git
+    git clone -b ${BRANCH} --single-branch --depth 1 https://github.com/superhero1/HA_enoceanmqtt.git
     printf "Date: $(date '+%Y-%m-%d %H:%M:%S')\nBranch: ${BRANCH}\n" > HA_enoceanmqtt/enoceanmqtt/overlays/homeassistant/VERSION
     cd HA_enoceanmqtt && printf "Commit ID: $(git rev-parse --short HEAD)" >> enoceanmqtt/overlays/homeassistant/VERSION && cd ..
 else
@@ -113,7 +113,7 @@ else
     else
         printf "Installing stable version ${VERSION%-*}\n"
     fi
-    wget -nv -O "app.tar.gz" "https://github.com/mak-gitdev/HA_enoceanmqtt/archive/refs/tags/${VERSION%-*}.tar.gz" && \
+    wget -nv -O "app.tar.gz" "https://github.com/superhero1/HA_enoceanmqtt/archive/refs/tags/${VERSION%-*}.tar.gz" && \
     printf "Extracting app.tar.gz\n" && tar xzf "app.tar.gz" && rm "app.tar.gz" && \
     mv -v "HA_enoceanmqtt-${VERSION%-*}" HA_enoceanmqtt && \
     printf "Date: $(date '+%Y-%m-%d %H:%M:%S')\nVersion: ${VERSION}\n" > HA_enoceanmqtt/enoceanmqtt/overlays/homeassistant/VERSION
